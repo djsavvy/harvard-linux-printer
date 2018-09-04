@@ -2,7 +2,7 @@
 
 # command check courtesy of https://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
 command -v smbclient >/dev/null 2>&1 || { echo >&2 "I require smbclient but it's not installed.  Aborting."; exit 1; }
-command -v lpadmin >/dev/null 2>&1 || { echo >&2 "I require lpadmin but it's not installed.  Aborting."; exit 1; }
+command -v sudo lpadmin >/dev/null 2>&1 || { echo >&2 "I require sudo lpadmin but it's not installed.  Aborting."; exit 1; }
 command -v cupsd >/dev/null 2>&1 || { echo >&2 "I require cupsd but it's not installed.  Aborting."; exit 1; }
 
 if [ -f /etc/os-release ]; then
@@ -36,7 +36,7 @@ DUPLEX=“DuplexTumble”
 APOptionalDuplexer="True"
    
 
-lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
 
 
 echo 'Installing Printer RiverCP-Color'
@@ -58,7 +58,7 @@ DUPLEX="DuplexTumble"
 APOptionalDuplexer="True"
 
 
-lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
 
 echo 'Installing Printer QuadCP-BW'
 
@@ -82,7 +82,7 @@ DUPLEX=“DuplexTumble”
 APOptionalDuplexer="True"
    
 
-lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
 
 
 echo 'Installing Printer QuadCP-Color'
@@ -104,7 +104,7 @@ DUPLEX="DuplexTumble"
 APOptionalDuplexer="True"
 
 
-lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
 
 
 
@@ -130,7 +130,7 @@ DUPLEX=“DuplexTumble”
 APOptionalDuplexer="True"
    
 
-lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
 
 
 echo 'Installing Printer ScienceCP-Color'
@@ -152,7 +152,7 @@ DUPLEX="DuplexTumble"
 APOptionalDuplexer="True"
 
 
-lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
 
 
 echo 'Installing Printer YardCP-BW'
@@ -177,7 +177,7 @@ DUPLEX=“DuplexTumble”
 APOptionalDuplexer="True"
    
 
-lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
 
 
 echo 'Installing Printer YardCP-Color'
@@ -199,7 +199,7 @@ DUPLEX="DuplexTumble"
 APOptionalDuplexer="True"
 
 
-lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
 
 
 echo "Done. Enjoy!"
