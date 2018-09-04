@@ -14,92 +14,193 @@ if [ -f /etc/os-release ]; then
 	fi
 fi
 
-printf "\n"
 
-echo "Go to the following URL and log in to determine your PaperCut username:"
-echo "https://papercut.fas.harvard.edu/app"
-
-printf "\n"
-
-read -p "Enter your PaperCut username: " papercut_username
-read -sp "Enter your PaperCut password: " papercut_password
-
-while [[ $papercut_username != ${papercut_username/ /} || $papercut_password != ${papercut_password/ /} ]]; do
-	echo "Username and password cannot contain spaces. Please try again."
-	printf "\n"
-	read -p "Enter your PaperCut username: " papercut_username
-	read -sp "Enter your PaperCut password: " papercut_password
-done
+echo 'HUIT Crimson Printer Installer'
+echo 'Installing Printer RiverCP-BW'
 
 
-if [ ! -a /etc/samba/smb.conf ]; then
-    sudo curl -s -o /etc/samba/smb.conf --create-dirs https://git.samba.org/samba.git/?p=samba.git;a=blob_plain;f=examples/smb.conf.default;hb=HEAD
-fi
-sudo sed -i '/syslog/d' /etc/samba/smb.conf
-# sudo echo "logging = syslog@0 file" >> /etc/samba/smb.conf
+NAME="RiverCP-BW" 
 
-{
-	IFS=$'\n'
-	print1_array=$(smbclient -L //HUIT-PPC-Print1.fas.harvard.edu -U FAS_DOMAIN/$papercut_username"%"$papercut_password | awk '!/\$/ && !/faculty/ && !/NetBIOS/ && !/session/ && !/Connection/ && !/Sharename/ && !/\-\-/ {print $1}')
-} &> ./harvard-linux-printer.log
+DESCRIPTION="RiverCP-BW" 
 
-printf "\n"
+LOCATION="RiverCP" 
 
-worked=false
+ADDRESS="10.35.2.26" 
 
-# echo $print1_array
+FINISHER="FinRUBICONB" 
 
-for x in $print1_array; do
-	if [ $x ];
-		then 
-		worked=true
-	fi
-done
+OPTIONTRAY="2Cassette" 
 
-if [ "$worked" = false ]; 
-	then
-		echo "Authentication error. Please make sure you entered your credentials correctly. Note that at this time passwords containing % or : cannot successfully authenticate." 
-		echo "If you suspect there is a bug, please submit a bug report at https://github.com/djsavvy/harvard-linux-printer/issues and upload the file harvard-linux-printer.log." 
-	exit 1
-fi
+DUPLEX=“DuplexTumble” 
+
+APOptionalDuplexer="True"
+   
+
+lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
 
 
-echo "Connected to HUIT-PPC-Print1."
+echo 'Installing Printer RiverCP-Color'
 
-{
-	for x in $print1_array; do 
-		if [ $x ];
-			then 
-				sudo lpadmin -p $x -E -v smb://$papercut_username:$papercut_password@FAS_DOMAIN/HUIT-PPC-Print1.fas.harvard.edu/$x
-		fi
-	done
-} &> ./harvard-linux-printer.log
+NAME="RiverCP-Color" 
 
-echo "Added printers from HUIT-PPC-Print1."
+DESCRIPTION="RiverCP-Color" 
 
-# printf "\n"
+LOCATION="RiverCP" 
 
-{
-	IFS=$'\n'
-	print2_array=$(smbclient -L //HUIT-PPC-Print2.fas.harvard.edu -U FAS_DOMAIN/$papercut_username"%"$papercut_password | awk '!/\$/ && !/faculty/ && !/NetBIOS/ && !/session/ && !/Connection/ && !/Sharename/ && !/\-\-/ {print $1}')
-} &> /dev/null
+ADDRESS="10.35.2.27" 
 
-echo "Connected to HUIT-PPC-Print2."
+FINISHER="FinRUBICONB" 
 
-{
-	for x in $print2_array; do 
-		if [ $x ];
-			then 
-				sudo lpadmin -p $x -E -v smb://$papercut_username:$papercut_password@FAS_DOMAIN/HUIT-PPC-Print2.fas.harvard.edu/$x
-		fi
-	done
-} &> ./harvard-linux-printer.log
+OPTIONTRAY="2Cassette" 
 
-echo "Added printers from HUIT-PPC-Print2."
+DUPLEX="DuplexTumble"
 
-printf "\n"
+APOptionalDuplexer="True"
 
-rm ./harvard-linux-printer.log
+
+lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+
+echo 'Installing Printer QuadCP-BW'
+
+# Printer information
+
+
+NAME="QuadCP-BW" 
+
+DESCRIPTION="QuadCP-BW" 
+
+LOCATION="Quad" 
+
+ADDRESS="10.35.2.26" 
+
+FINISHER="FinRUBICONB" 
+
+OPTIONTRAY="2Cassette" 
+
+DUPLEX=“DuplexTumble” 
+
+APOptionalDuplexer="True"
+   
+
+lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+
+
+echo 'Installing Printer QuadCP-Color'
+
+NAME="QuadCP-Color" 
+
+DESCRIPTION="QuadCP-Color" 
+
+LOCATION="Quad" 
+
+ADDRESS="10.35.2.27" 
+
+FINISHER="FinRUBICONB" 
+
+OPTIONTRAY="2Cassette" 
+
+DUPLEX="DuplexTumble"
+
+APOptionalDuplexer="True"
+
+
+lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+
+
+
+echo 'Installing Printer ScienceCP-BW'
+
+# Printer information
+
+
+NAME="ScienceCP-BW" 
+
+DESCRIPTION="ScienceCP-BW" 
+
+LOCATION="Science Center" 
+
+ADDRESS="10.35.2.26" 
+
+FINISHER="FinRUBICONB" 
+
+OPTIONTRAY="2Cassette" 
+
+DUPLEX=“DuplexTumble” 
+
+APOptionalDuplexer="True"
+   
+
+lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+
+
+echo 'Installing Printer ScienceCP-Color'
+
+NAME="ScienceCP-Color" 
+
+DESCRIPTION="ScienceCP-Color" 
+
+LOCATION="Science Center" 
+
+ADDRESS="10.35.2.27" 
+
+FINISHER="FinRUBICONB" 
+
+OPTIONTRAY="2Cassette" 
+
+DUPLEX="DuplexTumble"
+
+APOptionalDuplexer="True"
+
+
+lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+
+
+echo 'Installing Printer YardCP-BW'
+
+# Printer information
+
+
+NAME="YardCP-BW" 
+
+DESCRIPTION="YardCP-BW" 
+
+LOCATION="Yard" 
+
+ADDRESS="10.35.2.26" 
+
+FINISHER="FinRUBICONB" 
+
+OPTIONTRAY="2Cassette" 
+
+DUPLEX=“DuplexTumble” 
+
+APOptionalDuplexer="True"
+   
+
+lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+
+
+echo 'Installing Printer YardCP-Color'
+
+NAME="YardCP-Color" 
+
+DESCRIPTION="YardCP-Color" 
+
+LOCATION="Yard" 
+
+ADDRESS="10.35.2.27" 
+
+FINISHER="FinRUBICONB" 
+
+OPTIONTRAY="2Cassette" 
+
+DUPLEX="DuplexTumble"
+
+APOptionalDuplexer="True"
+
+
+lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+
 
 echo "Done. Enjoy!"
 echo "Please report any bugs to https://github.com/djsavvy/harvard-linux-printer/issues"
