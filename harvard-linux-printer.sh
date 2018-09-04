@@ -40,7 +40,7 @@ done
 
 
 if [ ! -a /etc/samba/smb.conf ]; then
-	sudo cp /etc/samba/smb.conf.default /etc/samba/smb.conf
+    sudo curl -s -o /etc/samba/smb.conf --create-dirs https://git.samba.org/samba.git/?p=samba.git;a=blob_plain;f=examples/smb.conf.default;hb=HEAD
 fi
 sudo sed -i '/syslog/d' /etc/samba/smb.conf
 # sudo echo "logging = syslog@0 file" >> /etc/samba/smb.conf
