@@ -15,7 +15,7 @@ command -v cupsd >/dev/null 2>&1 || { echo >&2 "I require cupsd but it's not ins
 if [ -f /etc/os-release ]; then
 	. /etc/os-release
 	ID=$ID
-	if [ "$ID" == "arch" ] 
+	if [ "$ID" == "arch" ]; then
 		sudo systemctl enable org.cups.cupsd.service
 		sudo systemctl start org.cups.cupsd.service
 	fi
