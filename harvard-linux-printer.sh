@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# sudo echo "Installing dependencies..."
-
-# the following lines are for Ubuntu only
-# sudo apt-get update > /dev/null
-# sudo apt-get install cups-client cups-server-common smbclient > /dev/null
-# echo "Done installing dependencies."
-
 # command check courtesy of https://stackoverflow.com/questions/592620/check-if-a-program-exists-from-a-bash-script
 command -v smbclient >/dev/null 2>&1 || { echo >&2 "I require smbclient but it's not installed.  Aborting."; exit 1; }
 command -v lpadmin >/dev/null 2>&1 || { echo >&2 "I require lpadmin but it's not installed.  Aborting."; exit 1; }
