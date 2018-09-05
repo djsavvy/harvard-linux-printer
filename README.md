@@ -13,8 +13,6 @@ This package is available in the [Arch User Repository](https://aur.archlinux.or
 
 ### Other Distributions
 
-**Note:** *Do not run this script on an insecure Wi-Fi network (like Harvard Guest or Harvard University).*
-
 Download `harvard-linux-printer.sh` to some directory. 
 
 Then, run the following:
@@ -24,15 +22,15 @@ sudo chmod 755 harvard-linux-printer.sh
 sudo ./harvard-linux-printer.sh
 ~~~~
 
-Note that you need to know your PaperCut username and password, which can be different from your my.harvard login information. 
+The printer connections are preserved across restarts (unlike with the PaperCut Windows setup), so you can delete the script after it has been run. Also, running the script multiple times will not create duplicate printer entries, but rather overwrite existing printers with the same names. 
 
-The printer connections are preserved across restarts (unlike with the Windows setup), so you can delete the script after it has been run. Also, running the script multiple times will not create duplicate printer entries, but rather overwrite existing printers with the same names. 
+You will be prompted for a username and password every time you print. Use "university/*your-papercut-username*" as your username and your papercut password for the password."  
 
 
 ## Known Issues
 
-- If your PaperCut username or password contains a colon or percent sign, then the script will fail to authenticate. *However, the password requirements do not allow these special characters, so this issue should never arise.* 
 - If printing from Chrome, it is recommended to use the system print dialog (`Ctrl + Shift + P`) rather than Chrome's built-in one. In particular, printing to a color printer from within Chrome results in a black-and-white image. 
 - Duplex printing is not yet available on all printers. 
+- The first attempted print to all of the Harvard printers is guaranteed to fail. Just retry it and wait for the authentication dialog to pop up. This is not an issue with the script, but with the CUPS implementation on Linux. 
 
 Please report any bugs [here](https://github.com/djsavvy/harvard-linux-printer/issues).
