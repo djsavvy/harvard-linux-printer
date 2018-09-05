@@ -16,191 +16,25 @@ fi
 
 
 echo 'HUIT Crimson Printer Installer'
-echo 'Installing Printer RiverCP-BW'
 
 
-NAME="RiverCP-BW" 
+function connect {
+    sudo lpadmin -p "$1" -D "$1" -E -v smb://$2/$1 -u allow:all -o printer-is-shared=false -o sides=two-sided-long-edge -o APOptionalDuplexer="True" -o Duplex="DuplexTumble"
 
-DESCRIPTION="RiverCP-BW" 
+    echo "Installing Printer $1"
+}
 
-LOCATION="RiverCP" 
-
-ADDRESS="10.35.2.26" 
-
-FINISHER="FinRUBICONB" 
-
-OPTIONTRAY="2Cassette" 
-
-DUPLEX=“DuplexTumble” 
-
-APOptionalDuplexer="True"
-   
-
-sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
-
-
-echo 'Installing Printer RiverCP-Color'
-
-NAME="RiverCP-Color" 
-
-DESCRIPTION="RiverCP-Color" 
-
-LOCATION="RiverCP" 
-
-ADDRESS="10.35.2.27" 
-
-FINISHER="FinRUBICONB" 
-
-OPTIONTRAY="2Cassette" 
-
-DUPLEX="DuplexTumble"
-
-APOptionalDuplexer="True"
-
-
-sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
-
-echo 'Installing Printer QuadCP-BW'
-
-# Printer information
-
-
-NAME="QuadCP-BW" 
-
-DESCRIPTION="QuadCP-BW" 
-
-LOCATION="Quad" 
-
-ADDRESS="10.35.2.26" 
-
-FINISHER="FinRUBICONB" 
-
-OPTIONTRAY="2Cassette" 
-
-DUPLEX=“DuplexTumble” 
-
-APOptionalDuplexer="True"
-   
-
-sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
-
-
-echo 'Installing Printer QuadCP-Color'
-
-NAME="QuadCP-Color" 
-
-DESCRIPTION="QuadCP-Color" 
-
-LOCATION="Quad" 
-
-ADDRESS="10.35.2.27" 
-
-FINISHER="FinRUBICONB" 
-
-OPTIONTRAY="2Cassette" 
-
-DUPLEX="DuplexTumble"
-
-APOptionalDuplexer="True"
-
-
-sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
-
-
-
-echo 'Installing Printer ScienceCP-BW'
-
-# Printer information
-
-
-NAME="ScienceCP-BW" 
-
-DESCRIPTION="ScienceCP-BW" 
-
-LOCATION="Science Center" 
-
-ADDRESS="10.35.2.26" 
-
-FINISHER="FinRUBICONB" 
-
-OPTIONTRAY="2Cassette" 
-
-DUPLEX=“DuplexTumble” 
-
-APOptionalDuplexer="True"
-   
-
-sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
-
-
-echo 'Installing Printer ScienceCP-Color'
-
-NAME="ScienceCP-Color" 
-
-DESCRIPTION="ScienceCP-Color" 
-
-LOCATION="Science Center" 
-
-ADDRESS="10.35.2.27" 
-
-FINISHER="FinRUBICONB" 
-
-OPTIONTRAY="2Cassette" 
-
-DUPLEX="DuplexTumble"
-
-APOptionalDuplexer="True"
-
-
-sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
-
-
-echo 'Installing Printer YardCP-BW'
-
-# Printer information
-
-
-NAME="YardCP-BW" 
-
-DESCRIPTION="YardCP-BW" 
-
-LOCATION="Yard" 
-
-ADDRESS="10.35.2.26" 
-
-FINISHER="FinRUBICONB" 
-
-OPTIONTRAY="2Cassette" 
-
-DUPLEX=“DuplexTumble” 
-
-APOptionalDuplexer="True"
-   
-
-sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
-
-
-echo 'Installing Printer YardCP-Color'
-
-NAME="YardCP-Color" 
-
-DESCRIPTION="YardCP-Color" 
-
-LOCATION="Yard" 
-
-ADDRESS="10.35.2.27" 
-
-FINISHER="FinRUBICONB" 
-
-OPTIONTRAY="2Cassette" 
-
-DUPLEX="DuplexTumble"
-
-APOptionalDuplexer="True"
-
-
-sudo lpadmin -p "$NAME" -D "$DESCRIPTION" -L "$LOCATION" -E -v smb://"$ADDRESS"/"$NAME" -P "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/generic.ppd" -u allow:all -o printer-is-shared=false -o APOptionalDuplexer="$APOptionalDuplexer" -o Duplex="$DUPLEX"
+connect "RiverCP-BW" "10.35.2.26"
+connect "RiverCP-Color" "10.35.2.27"
+connect "QuadCP-BW" "10.35.2.26"
+connect "QuadCP-Color" "10.35.2.27"
+connect "ScienceCP-BW" "10.35.2.26"
+connect "ScienceCP-Color" "10.35.2.27"
+connect "YardCP-BW" "10.35.2.26"
+connect "YardCP-Color" "10.35.2.27"
 
 
 echo "Done. Enjoy!"
+echo "You will be prompted for a username and password every time you print. Use \"university/{your-papercut-username}\" as your username and your papercut password for the password." 
 echo "Please report any bugs to https://github.com/djsavvy/harvard-linux-printer/issues"
+echo "Note that at this time, duplex printing does not work."
